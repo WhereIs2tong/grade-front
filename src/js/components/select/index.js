@@ -6,10 +6,10 @@ import TeacherTitleList from './TeacherTitleList';
 import ExamType from './ExamType';
 import CheckState from './CheckState';
 import TeacherList from './TeacherList';
-import CourseList from './CourseList';
+import CourseForAcidList from './CourseForAcidList';
 import StudentClassList from './StudentClassList';
 import MajorList from './MajorList';
 import AssessmentType from './AssessmentType'
 import CourseList2 from './CourseList2'
 
-export {QueryList,DepartmentList,ResearchPostionList,SemesterList,TeacherTitleList,ExamType,CheckState,TeacherList,CourseList,CourseList2,StudentClassList,MajorList,AssessmentType}
+export {QueryList,DepartmentList,ResearchPostionList,SemesterList,TeacherTitleList,ExamType,CheckState,TeacherList,CourseForAcidList,CourseList2,StudentClassList,MajorList,AssessmentType}

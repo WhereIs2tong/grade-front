@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import '../css/index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap-theme.min.css";
+import "@blueprintjs/core/lib/css/blueprint.css"
+import "@blueprintjs/select/lib/css/blueprint-select.css";
 import PropTypes from 'prop-types';
 
 import {Grid, Nav, NavItem, Row} from 'react-bootstrap';
@@ -49,10 +51,12 @@ MenuPage.defaultProps={
 };
 
 const menuMap = {
+    MakeExaminePlanApp:'生成考试计划',
     GradeControlApp:'成绩控制',
     GradeInputApp:'成绩录入管理',
     GradeExamineApp:'成绩录入审核',
-    GradeEntryApp:'成绩录入审批'
+    GradeEntryApp:'成绩录入审批',
+    ScorePoolApp:'学生成绩总库',
 };
 
 

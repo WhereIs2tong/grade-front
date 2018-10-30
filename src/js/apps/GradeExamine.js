@@ -16,7 +16,7 @@ import ModalDialog from "../components/ModalDialog";
 import GradeDetail from "./GradeDetail";
 import MapperFormater from "../components/formaters/MapperFormater";
 import $ from 'jQuery';
-import CourseList from "../components/select/CourseList";
+import CourseForAcidList from "../components/select/CourseForAcidList";
 import GradeExamineDialog from "./GradeExamineDialog";
 import PropTypes from 'prop-types';
 
@@ -52,11 +52,11 @@ export default class GradeExamine extends Component {
                        researchPositionId={this.state.rp_id} defaultValue={this.state.teacher_id}
                        onChange={(e)=>this.setState({"teacher_id":parseInt(e.target.value,10)})}  /></Col>
                    <Col md={4}>
-                       <CourseList defaultValue={this.state.teaching_task_id}
-                                   teacher_id={this.state.teacher_id}
-                                   exam_type={this.state.exam_type}
-                                   semester_id={this.state.semester_id}
-                                   onChange={(e)=>this.setState({"teaching_task_id":parseInt(e.target.value,10)})} />
+                       <CourseForAcidList defaultValue={this.state.teaching_task_id}
+                                          teacher_id={this.state.teacher_id}
+                                          exam_type={this.state.exam_type}
+                                          semester_id={this.state.semester_id}
+                                          onChange={(e)=>this.setState({"teaching_task_id":parseInt(e.target.value,10)})} />
                    </Col>
                 </Row><Row>
                    <Col md={4}><StudentClassList
@@ -127,7 +127,12 @@ export default class GradeExamine extends Component {
             let lineNo = props.rowIdx;
             return (<FormGroup>
                 <Button bsStyle="default" rowno={lineNo} onClick={this.showInputDetails}>成绩</Button>
-                <Button bsStyle="default" rowno={lineNo} onClick={this.checkGrade.bind(this)}>{this.props.check_stage === "check1"? '审核':'审批'}</Button>
+                {
+                    ((this.props.check_stage === "check1" && this.state.rows[lineNo]["check_state"]==0) ||
+                    (this.props.check_stage === "check2" && this.state.rows[lineNo]["check_state"]==1)) ?(
+                        <Button bsStyle="default" rowno={lineNo} onClick={this.checkGrade.bind(this)}>{this.props.check_stage === "check1"? '审核':'审批'}</Button>
+                    ):null
+                }
             </FormGroup>)
         };
 
@@ -146,7 +151,8 @@ export default class GradeExamine extends Component {
 
         this.InputDetails = <AutoFormater popoverFunc={this.poperOverGradePercent.bind(this)} renderAssign={this.renderInputDetails.bind(this)} args={null}/>;
 
-        this._columns = [{
+        this._columns = [
+            {
                 key: 'id',
                 name: '序号',
                 width: 80
@@ -179,12 +185,12 @@ export default class GradeExamine extends Component {
         },{
             key:'check_state',
             name:'审核标志',
-            formatter:<MapperFormater keyMap={{"0":"未审核","1":"已通过","-1":"未通过","2":"已通过","-2":"已通过"}}
+            formatter:<MapperFormater keyMap={{"0":"未审核","1":"已通过","-1":"未通过","2":"已通过","-2":"已通过","5":"录入中"}}
                                       popoverFunc={this.poperOverRemark1.bind(this)} />
         },{
             key:'check_state_2',
             name:'审批标志',
-            formatter:<MapperFormater keyMap={{"0":"","1":"","-1":"","2":"已通过","-2":"未通过"}}
+            formatter:<MapperFormater keyMap={{"0":"","1":"","-1":"","2":"已通过","-2":"未通过","5":"录入中"}}
                                       popoverFunc={this.poperOverRemark2.bind(this)} />
         },{
             key:'grade_count',

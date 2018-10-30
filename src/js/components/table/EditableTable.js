@@ -20,7 +20,7 @@ class EditableTable extends Component{
         onDataChange:PropTypes.func.isRequired
     };
     static defaultProps = {
-        editable:true
+        editable:true,
     };
     
     constructor(props, context) {
@@ -75,7 +75,7 @@ class EditableTable extends Component{
         const row = this.state.rows[rowIndex];
         const cell = row[this.props.columns[columnIndex].key];
         // let editable = this.props.columns[columnIndex].editable && row["EDIT"];
-        let editable = this.props.columns[columnIndex].editable;
+        let editable = this.props.columns[columnIndex].editable || false;
         const columnSize = this.props.columns.length;
         // console.info(rowIndex,columnIndex,cell);
         let isFocused = rowIndex==this.state.focusedCell.rowIndex && columnIndex==this.state.focusedCell.colIndex;

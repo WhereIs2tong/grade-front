@@ -3,7 +3,7 @@ import $ from 'jQuery';
 import QueryList from './QueryList'
 import PropTypes from 'prop-types';
 
-export default class CourseList extends QueryList {
+export default class CourseForAcidList extends QueryList {
     static propTypes = {
         exam_type:PropTypes.number,
         check_state:PropTypes.number,
@@ -45,7 +45,7 @@ export default class CourseList extends QueryList {
     }
 }
 
-CourseList.defaultProps={
+CourseForAcidList.defaultProps={
     label:'课程',
     exam_type:0,
     check_state:0,

@@ -141,6 +141,7 @@ export default class ExamPlan extends Component {
             <Row><Col md={12}>
                 <ButtonToolbar>
                     <Button onClick={this.loadRows.bind(this)}>搜索</Button>
+                    <Button onClick={this.generateAll.bind(this)}>批量生成(本页中人数不为0的所有班级)</Button>
                     <ToggleButtonGroup type="checkbox" value={this.state.queryCondition}
                         onChange={(e)=>this.setState({queryCondition:e})}
                     >
@@ -208,6 +209,20 @@ export default class ExamPlan extends Component {
             });
     }
 
+    generateAll(){
+        let paramArr = this.state.rows.filter(row=>!row["exam_plan_id"] && row["student_count"]>0).map(row=>Object.assign({},{
+            teaching_task_id:row["id"],
+            grade_type:row["assessment_id"]
+        }));
+        const that = this;
+        this.xhr = $.post(window.baseUrl+'app/grade/makeExamPlanBatch',
+            {context:JSON.stringify(paramArr)},function (data) {
+                if(data["success"]===true||data["success"]==='true'){
+                    that.loadRows();
+                }
+            });
+    }
+
     makeExamPlan(e){
         let rowNo = e.target.getAttribute("rowno");
         let exam_plan_id = this.state.rows[rowNo]["exam_plan_id"];
@@ -218,6 +233,7 @@ export default class ExamPlan extends Component {
 
         let params = {
             teaching_task_id:this.state.rows[rowNo]["id"],
+            grade_type:this.state.rows[rowNo]["assessment_id"]
         };
         const that = this;
         this.xhr = $.post(window.baseUrl+'app/grade/makeExamPlan',

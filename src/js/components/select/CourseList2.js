@@ -7,6 +7,7 @@ export default class CourseList2 extends QueryList {
     static propTypes = {
         faculty:PropTypes.number,//开课院系
         course_name:PropTypes.string,
+        class_id:PropTypes.number,//班级id
         teaching_research_id:PropTypes.number
     };
     constructor(props, context) {
@@ -19,6 +20,7 @@ export default class CourseList2 extends QueryList {
         let params = {
             faculty:this.props.faculty,
             course_name:this.props.course_name,
+            class_id:this.props.class_id,
             teaching_research_id:this.props.teaching_research_id
         };
         $.post(window.baseUrl+'app/grade/queryCourses2',
@@ -38,6 +40,7 @@ CourseList2.defaultProps={
     faculty:0,//开课院系
     teaching_research_id:0,
     course_name:'',
+    class_id:0
 };
 
 

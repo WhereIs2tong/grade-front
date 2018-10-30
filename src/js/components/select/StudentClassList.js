@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 
 export default class StudentClassList extends QueryList {
     static propTypes = {
-        teaching_task_id:PropTypes.number
+        teaching_task_id:PropTypes.number,
+        course_id:PropTypes.number
     };
     constructor(props, context) {
         super(props, context);
@@ -15,7 +16,8 @@ export default class StudentClassList extends QueryList {
     loadOptions(){
         let that = this;
         let params = {
-            teaching_task_id:this.props.teaching_task_id
+            teaching_task_id:this.props.teaching_task_id,
+            course_id:this.props.course_id
         };
         $.post(window.baseUrl+'app/grade/queryStudentClass',
             {context:JSON.stringify(params)},
@@ -32,6 +34,7 @@ export default class StudentClassList extends QueryList {
 StudentClassList.defaultProps={
     label:'班级',
     teaching_task_id:0,
+    course_id:0
 };
 
 

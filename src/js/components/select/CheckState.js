@@ -23,7 +23,7 @@ CheckState.defaultProps={
         },
         {
             id:10,
-            name:"未审核"
+            name:"待审核"
         },
         {
             id:1,
@@ -40,6 +40,10 @@ CheckState.defaultProps={
         {
             id:-2,
             name:"审批未通过"
+        },
+        {
+            id:5,
+            name:"录入中"
         }
     ]
 };

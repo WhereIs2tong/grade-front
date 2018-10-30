@@ -17,9 +17,9 @@ import CourseCategory from "../components/select/CourseCategory";
 import CourseType from "../components/select/CourseType";
 import GradeFlag from "../components/select/GradeFlag";
 import MajorList from "../components/select/MajorList";
-import CourseList from "../components/select/CourseList";
+import CourseForAcidList from "../components/select/CourseForAcidList";
 
-export default class StudentScoreBase extends Component {
+export default class ScorePool extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -67,12 +67,12 @@ export default class StudentScoreBase extends Component {
                             <FormField title="课程名称" value={this.state.course_name} onChange={(e)=>this.setState({"course_name":e.target.value})} />
                         </Col>
                         <Col md={4}>
-                            <CourseList defaultValue={this.state.teaching_task_id}
-                                        departments={this.state.department_id}
-                                        majod_id={this.state.student_major_id}
-                                        course_name={this.state.course_name}
-                                        exam_type={this.state.exam_type} semester_id={this.state.semester_id}
-                                        onChange={(e)=>this.setState({"teaching_task_id":parseInt(e.target.value,10)})} />
+                            <CourseForAcidList defaultValue={this.state.teaching_task_id}
+                                               departments={this.state.department_id}
+                                               majod_id={this.state.student_major_id}
+                                               course_name={this.state.course_name}
+                                               exam_type={this.state.exam_type} semester_id={this.state.semester_id}
+                                               onChange={(e)=>this.setState({"teaching_task_id":parseInt(e.target.value,10)})} />
                         </Col>
                     </Row>
                     <Row>
@@ -264,6 +264,7 @@ export default class StudentScoreBase extends Component {
             course_code:this.state.course_code,
             student_name:this.state.student_name,
             course_name:this.state.course_name,
+            check_state:2
         };
         this.xhr = $.post(window.baseUrl+'app/grade/queryStudentWithInfo',
             {context:JSON.stringify(params)},function (data) {

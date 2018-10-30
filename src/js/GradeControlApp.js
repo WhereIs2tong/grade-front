@@ -9,7 +9,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap-theme.min.css";
 import "@blueprintjs/core/lib/css/blueprint.css"
 import "@blueprintjs/table/lib/css/table.css"
-import GradeControl from "./apps/GradeControl2";
+import "@blueprintjs/select/lib/css/blueprint-select.css";
+
+import GradeControl from "./apps/GradeControl";
 
 ReactDOM.render(<GradeControl />, document.getElementById('root'));
 

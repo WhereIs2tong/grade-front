@@ -16,7 +16,7 @@ import $ from 'jQuery';
 import AutoFormater from "../components/formaters/AutoFormater";
 
 
-export default class GradeLack extends Component {
+export default class ExamLack extends Component {
     constructor(props, context) {
         super(props, context);
 

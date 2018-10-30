@@ -1,6 +1,6 @@
 /**
  * Created by Wang on 2018/7/27.
- * 成绩录入审核
+ * 生成考试计划
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -10,6 +10,5 @@ import "bootstrap/dist/css/bootstrap-theme.min.css";
 import "@blueprintjs/core/lib/css/blueprint.css"
 import "@blueprintjs/select/lib/css/blueprint-select.css";
 
-import GradeExamine from "./apps/GradeExamine";
-
-ReactDOM.render(<GradeExamine check_stage="check1" />, document.getElementById('root'));
+import ExamPlan from "./apps/ExamPlan";
+ReactDOM.render(<ExamPlan />, document.getElementById('root'));

@@ -12,7 +12,7 @@ import StudentClassList from "../components/select/StudentClassList";
 import QueryList from "../components/select/QueryList";
 
 
-export default class GradeLackAddDialog extends QueryList {
+export default class ExamLackAddDialog extends QueryList {
     static propTypes = {
         onSubmit:PropTypes.func,
         title:PropTypes.string,
@@ -106,7 +106,7 @@ export default class GradeLackAddDialog extends QueryList {
         this.props.onClose();
     }
 }
-GradeLackAddDialog.defaultProps={
+ExamLackAddDialog.defaultProps={
     onSubmit:(exam_plan_id,passed,remark)=>console.info(exam_plan_id,passed,remark),
     title:"审核",
     dialog_args:{

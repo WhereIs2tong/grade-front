@@ -12,7 +12,8 @@ import SemesterList from "../components/select/SemesterList";
 import ChargeState from "../components/select/ChargeState";
 import MajorList from "../components/select/MajorList";
 import {FormField} from "../components/FormField";
-export default class GradeMakeUp extends Component {
+
+export default class ExamMakeUp extends Component {
     constructor(props, context) {
         super(props, context);
 
